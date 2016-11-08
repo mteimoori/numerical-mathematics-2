@@ -1,4 +1,4 @@
-% Assignment 01, Exercise 05, by Student 1, Student 2, Mohammad Teimoori(370543) 
+% Assignment 01, Exercise 04,05, by Georgia Markouleki(387232), Manuel Widdel(379704), Mohammad Teimoori(370543) 
 % exercise 4, part a
 Kn = a01e04sparse(1000);
 % exercise 4, part b
@@ -22,11 +22,17 @@ for dim = [10, 100, 1000]
         fullKnb = full(Kn)\b;
     tictoced = toc;
         fprintf('timing for full(Kn)\\b when size = %d is %f \n', dim,tictoced);
+   tic
+        ours = a01e05invKn(b);
+   tictoced = toc;
+        fprintf('timing for a01e05invKn when size = %d is %f \n', dim,tictoced);
     tic
         invFullKnb = inv(full(Kn))*b;
     tictoced = toc;
         fprintf('timing for inv(full(Kn))*b when size = %d is %f \n', dim,tictoced);
+    
 end
+%time increases respectively 
 % exercise 5, part c
 points = 10;
 t = zeros(points);
@@ -40,3 +46,4 @@ for n = 1:points
     t(n) = toc;
 end
 plot(t)
+% as you see it grows exponentialy when n goes toward infinity

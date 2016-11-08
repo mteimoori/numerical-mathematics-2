@@ -1,3 +1,4 @@
+% Assignment 01, Exercise 04,05, by Georgia Markouleki(387232), Manuel Widdel(379704), Mohammad Teimoori(370543) 
 function [x] = a01e05invKn(b)
 N = length(b);
 Kn = a01e04sparse(N);
