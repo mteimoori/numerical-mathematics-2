@@ -1,3 +1,4 @@
+% Assignment 02, Exercise 03 by Georgia Markouleki(387232), Manuel Widdel(379704), Mohammad Teimoori(370543)
 function u = a02e04Mov(a,b)
 %UNTITLED3 Summary of this function goes here
 %   Detailed explanation goes here
