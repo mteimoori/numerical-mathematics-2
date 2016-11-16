@@ -40,11 +40,22 @@ for p = 1:15
     error(p)=norm(error_abs,inf);
     h_array(p)=h; %stores the values of h in an array which can be plotted
 
+    
 
 
 end
 
-loglog(h_array,error); 
+    loglog(h_array,error);%for p<14, the logarithm of p over the logarithm of h goes towards zero linearly.
+                          %for p>13, the error(p) starts to grow bigger.
+                          %Therefore, the optimal step size is achieved
+                          %with p=13
+    
+    log_h_array = log(h_array(2:p));
+    log_error = log(error(2:p));
+    quickness = (sum(log_error) / (p-1)) / (sum(log_h_array) / (p-1));
+    %the value of quickness represents the slope of loglog(h_array,error).
+    %it represents how fast the logarithm of error(p) tends towards zero in
+    %respect to the logarithm of h.
 end
 
 
