@@ -1,6 +1,14 @@
 % Assignment 03, Exercise 04a/b) by Georgia Markouleki(387232), Manuel Widdel(379704), Mohammad Teimoori(370543)
 function [ xh, Lh, fh ] = a03ex04getBVP(p)
 
+% part a): analytical solution for f(x)
+syms x;
+u(x) = 1 + 4 * x^2 - 3 * x^3;
+du = diff(u,x);
+ddu = diff(du,x);
+f_analytical = -ddu - 4 * du + u;
+
+% part b):
 N = 2.^p - 1;
 h = 1 / (N + 1);     % mesh size
 
@@ -29,5 +37,4 @@ figure(p)
 x = 2:N-1;
 plot(x,fh(2:N-1),x,f_analytical(2:N-1)); %this plot compares the values between the analytical and the numerical solution
 end
-
 
