@@ -1,3 +1,4 @@
+% Assignment 03, Exercise 04a/b) by Georgia Markouleki(387232), Manuel Widdel(379704), Mohammad Teimoori(370543)
 function [ xh, Lh, fh ] = a03ex04getBVP(p)
 
 N = 2.^p - 1;
@@ -7,30 +8,10 @@ a = 1;
 b = 4;
 c = 1;
 
-Sparse_a = zeros(N,N); % It ist better to later rewrite values in an existing, fixed-size matrix than to change the size of the matrix every time 
-Sparse_b = zeros(N,N);
-Sparse_c = speye(N,N); % creates the (0,1,0) matrix
 
-for i = 1:N % these two for-loops add the correct values to the other two matrices, (1,-2,1) and (-1,0,1)
-    for j = 1:N
-        if i == j
-            Sparse_a(i,j) = -2; 
-        end
-        if j+1 == i
-                Sparse_a(i,j) = 1;
-                Sparse_b(i,j) = -1;
-        end
-        if i+1 == j
-                    Sparse_a(i,j) = 1;
-                    Sparse_b(i,j) = 1;
-        end
-
-    end
-end
-
-Sparse_a = sparse(Sparse_a);
-
-Sparse_b = sparse(Sparse_b);
+Sparse_a = sparse(gallery('tridiag',N,1,-2,1));
+Sparse_b = sparse(gallery('tridiag',N,-1,0,1));
+Sparse_c = speye(N,N);
 
 Lh = -a / h.^2 * Sparse_a - b / (2 * h) * Sparse_b + c * Sparse_c;
 
@@ -48,4 +29,5 @@ figure(p)
 x = 2:N-1;
 plot(x,fh(2:N-1),x,f_analytical(2:N-1)); %this plot compares the values between the analytical and the numerical solution
 end
+
 
