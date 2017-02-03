@@ -22,6 +22,7 @@ function [phi] = a11e02pyramid(i,j,h,order)
         f5 = gradient(f5,[x,y]);
         f6 = gradient(f6,[x,y]);
     end
+    %if affected area is on the boundary 
     if ((i == 1 || j == 1) || (i == num_points_row || j == num_points_row) )
        %handle 4 corners 
        if(i == 1 && j == 1)
